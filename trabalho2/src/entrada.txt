@@ -1,0 +1,12 @@
+100
+TAM
+4
+12
+AZUL
+8
+300
+American Airlines
+14
+200
+TAM
+10
