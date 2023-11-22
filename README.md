@@ -1,49 +1,41 @@
 # Simulação de Aeroporto
 
-Este projeto é uma simulação do funcionamento de um aeroporto utilizando conceitos de orientação a objetos, listas e filas em Java.
+Este projeto consiste em uma simulação do funcionamento de um aeroporto utilizando Java, com ênfase em orientação a objetos, listas e filas.
 
-## Especificações do Trabalho
+## Descrição
 
-O projeto foi desenvolvido como parte do trabalho final para a disciplina XXXX no Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG), Unidade Divinópolis. O trabalho consiste em simular um aeroporto com as seguintes especificações:
+O programa simula o funcionamento de um aeroporto, considerando diferentes condições climáticas e priorização de aterrissagens, utilizando listas e filas para organizar as aeronaves nas pistas de aterrissagem e decolagem.
 
-- Descrição detalhada das especificações do trabalho.
-- Objetivo do trabalho.
-- Requisitos e funcionalidades do sistema simulado.
+## Funcionalidades
 
-## Funcionalidades do Programa
-
-O programa desenvolvido contempla as seguintes funcionalidades:
-
-- Simulação de chegadas e partidas de aviões.
-- Organização de filas de aterrissagem e decolagem.
-- Priorização de aterrissagens conforme condições climáticas.
-- Cálculo de tempos médios de espera para decolagem e aterrissagem.
-- Geração de alertas em situações críticas.
-
-## Executando o Programa
-
-### Pré-requisitos
-
-- Java instalado na máquina.
-
-### Como Executar
-
-1. Clone o repositório para sua máquina local.
-2. Abra o terminal na pasta do projeto.
-3. Compile o programa usando o comando: `javac NomeDoArquivo.java`.
-4. Execute o programa com o comando: `java NomeDoArquivo`.
+- Cadastro manual de aviões com informações como quantidade de passageiros, companhia aérea, nível de combustível e estado de emergência.
+- Leitura de aviões a partir de um arquivo de entrada.
+- Geração aleatória de aviões para simulação.
+- Organização das aeronaves nas filas de aterrissagem e decolagem.
+- Verificação do estado do clima (ensolarado ou nublado) e consideração de emergências com base nele.
+- Cálculo do tempo médio de espera nas filas de aterrissagem e decolagem.
+- Identificação de situações críticas, como aterrissagem de emergência por falta de combustível.
 
 ## Estrutura do Projeto
 
-A estrutura do projeto é organizada da seguinte forma:
+- `MainAviao.java`: Arquivo principal contendo a lógica principal da simulação.
+- `Pista.java`: Classe que representa uma pista do aeroporto, com métodos para manipular filas de aviões.
 
-- `src/`: Contém os arquivos-fonte do projeto.
-- `docs/`: Documentação adicional, se houver.
-- `out/`: Arquivos compilados gerados pelo Java.
+## Como Executar
 
-## Contribuindo
+### Pré-requisitos
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+- Java JDK instalado na máquina.
+
+### Execução
+
+1. Clone este repositório para o seu ambiente local.
+2. Compile o código-fonte usando o comando `javac MainAviao.java Pista.java`.
+3. Execute o programa com o comando `java MainAviao`.
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues relatando problemas ou enviar pull requests com melhorias.
 
 ## Autores
 
