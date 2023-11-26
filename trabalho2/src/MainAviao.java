@@ -79,6 +79,7 @@ public class MainAviao {
 					Aviao temp3 = P1.criarAviao(clima, In);
 					P1.comparar(P2).inserirA(temp3);
 				}
+				P1.organizar(P2, PD);
 			}
 			if(op==2) {
 				//Lendo arquivo
@@ -90,6 +91,20 @@ public class MainAviao {
 			            	int id;
 			                Aviao temp1 = new Aviao();
 			                double passageiros = Double.parseDouble(linha); // converte a linha para double
+							String chassi;
+						
+							// Gerar uma identificação aleatória para o avião
+							StringBuilder sb = new StringBuilder();
+							String caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+						
+							for (int i = 0; i < 6; i++) { // Geração de ID com 6 caracteres
+								int index = random.nextInt(caracteresPermitidos.length());
+								char caractereAleatorio = caracteresPermitidos.charAt(index);
+								sb.append(caractereAleatorio);
+							}
+							
+							chassi = sb.toString();
+							temp1.setIdentification(chassi);
 			                temp1.setPassageiros(passageiros);
 			                linha = br.readLine();
 			                temp1.setCompanhia(linha);
@@ -122,6 +137,7 @@ public class MainAviao {
 						P1.comparar(P2).inserirA(temp2);
 					}
 				}
+				P1.organizar(P2, PD);
 			}
 			if(op==3) {
 				//Geração Aleátoria
@@ -140,6 +156,7 @@ public class MainAviao {
 					Aviao temp3 = P1.criarAviaoRandom(clima);
 					P1.comparar(P2).inserirA(temp3);
 				}
+				P1.organizar(P2, PD);
 			}
 			//pos execução
 		}

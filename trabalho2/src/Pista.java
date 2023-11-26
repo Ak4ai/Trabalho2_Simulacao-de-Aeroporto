@@ -87,6 +87,20 @@ public class Pista {
 		int combustivel,passageiros,comp,emergencia=0,id;
 		char necessidade;
 		String companhia=" ";
+		Random random = new Random();
+		String chassi;
+	
+		// Gerar uma identificação aleatória para o avião
+		StringBuilder sb = new StringBuilder();
+		String caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	
+		for (int i = 0; i < 6; i++) { // Geração de ID com 6 caracteres
+			int index = random.nextInt(caracteresPermitidos.length());
+			char caractereAleatorio = caracteresPermitidos.charAt(index);
+			sb.append(caractereAleatorio);
+		}
+		chassi = sb.toString();
+		
 		do {
 		System.out.print("Quantidade de Passageiros: ");
 		passageiros = In.nextInt();
@@ -130,6 +144,8 @@ public class Pista {
 		} else {
 			id = combustivel;
 		}
+		
+		temp1.setIdentification(chassi);
 		temp1.setId(id);
 		temp1.setCombustivel(combustivel);
 		temp1.setCompanhia(companhia);
@@ -199,11 +215,11 @@ public class Pista {
 	}
 	public void organizar(Pista A,Pista decolagem) {
 		try {
-			if(decolagem.fila1.size()>0 && decolagem.fila2.size()>0) {
-			decolagem.fila1.remove(0);
-			decolagem.fila2.remove(0);
-			System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila1.get(0).getId() + "]" + " e Chassi: " + decolagem.fila1.get(0).getIdentification()+ "\u001B[0m");
-			System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila2.get(0).getId() + "]" + " e Chassi: " + decolagem.fila2.get(0).getIdentification()+ "\u001B[0m");
+			if (decolagem.fila1.size() >= 2 && decolagem.fila2.size() >= 2) {
+				decolagem.fila1.remove(0);
+				decolagem.fila2.remove(0);
+				System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila1.get(0).getId() + "]" + " e Chassi: " + decolagem.fila1.get(0).getIdentification() + "\u001B[0m");
+				System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila2.get(0).getId() + "]" + " e Chassi: " + decolagem.fila2.get(0).getIdentification() + "\u001B[0m");
 			}
 		} catch (Exception e) {
 			System.out.println("Erro ao Organizar");
@@ -247,6 +263,15 @@ public class Pista {
             A.getFila1().remove(0);
             this.getFila1().remove(0);
         }
+		if (decolagem.getFila1().size() > 0) {
+			Aviao ultimoFila1 = decolagem.getFila1().get(decolagem.getFila1().size() - 1);
+			System.out.println("\u001B[35mAvião entrou na Fila de Decolagem com ID [" + ultimoFila1.getId() + "] e Chassi: " + ultimoFila1.getIdentification() + "\u001B[0m");
+		}
+		
+		if (decolagem.getFila2().size() > 0) {
+			Aviao ultimoFila2 = decolagem.getFila2().get(decolagem.getFila2().size() - 1);
+			System.out.println("\u001B[35mAvião entrou na Fila de Decolagem com ID [" + ultimoFila2.getId() + "] e Chassi: " + ultimoFila2.getIdentification() + "\u001B[0m");
+		}		
 	}
 }
 	public void decrementar() {
