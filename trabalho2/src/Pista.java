@@ -33,6 +33,15 @@ public class Pista {
 		this.numero = numero;
 	}
 	public void inserirA(Aviao a) {
+		if (this.getNumero() == 3) {
+			// Se for a pista 3, imprime a mensagem em rosa
+			System.out.print("\u001B[35mFila de Decolagem\u001B[0m");
+		} else if(this.getNumero() == 1){
+			System.out.print("\u001B[36mFila de Aterrisagem\u001B[0m");
+		} else if(this.getNumero() == 2){
+			System.out.print("\u001B[32mFila de Aterrisagem\u001B[0m");
+		}
+		
 		if(fila1.size()>fila2.size()) {
 			this.fila2.add(a);
 			System.out.println("-> Avião com ID:" + a.getId() + " Chassi: " + a.getIdentification() + " adicionado na Fila 2 da [PISTA " + this.getNumero() + "]");
@@ -213,16 +222,22 @@ public class Pista {
 		else
 			return this;
 	}
-	public void organizar(Pista A,Pista decolagem) {
-		try {
-			if (decolagem.fila1.size() >= 2 && decolagem.fila2.size() >= 2) {
-				decolagem.fila1.remove(0);
-				decolagem.fila2.remove(0);
-				System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila1.get(0).getId() + "]" + " e Chassi: " + decolagem.fila1.get(0).getIdentification() + "\u001B[0m");
-				System.out.println("\u001B[31mAvião colocado para decolar com ID [" + decolagem.fila2.get(0).getId() + "]" + " e Chassi: " + decolagem.fila2.get(0).getIdentification() + "\u001B[0m");
+	public void organizar(Pista A,Pista decolagem,int entrada) {
+		if(entrada == 0){
+			try {
+				if (decolagem.fila1.size() >= 1) {
+					System.out.println("\u001B[31mAvião decolado com ID [" + decolagem.fila1.get(0).getId() + "]" + " e Chassi: " + decolagem.fila1.get(0).getIdentification() + " Na Fila 1" + "\u001B[0m");
+					decolagem.fila1.remove(0);
+				} 
+				if (decolagem.fila2.size() >= 1) {
+					System.out.println("\u001B[31mAvião decolado com ID [" + decolagem.fila2.get(0).getId() + "]" + " e Chassi: " + decolagem.fila2.get(0).getIdentification() + " Na Fila 2" + "\u001B[0m");
+					decolagem.fila2.remove(0);
+				}
+			} catch (Exception e) {
+				System.out.println("Erro ao Organizar");
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao Organizar");
+		} else {
+			entrada = 0;
 		}
 		if(A.getFila1().size()>0 && A.getFila2().size()>0 && this.getFila1().size()>0 && this.getFila2().size()>0) {
 		int num1 = A.getFila1().get(0).getId();
@@ -262,16 +277,7 @@ public class Pista {
             A.getFila2().remove(0);
             A.getFila1().remove(0);
             this.getFila1().remove(0);
-        }
-		if (decolagem.getFila1().size() > 0) {
-			Aviao ultimoFila1 = decolagem.getFila1().get(decolagem.getFila1().size() - 1);
-			System.out.println("\u001B[35mAvião entrou na Fila de Decolagem com ID [" + ultimoFila1.getId() + "] e Chassi: " + ultimoFila1.getIdentification() + "\u001B[0m");
-		}
-		
-		if (decolagem.getFila2().size() > 0) {
-			Aviao ultimoFila2 = decolagem.getFila2().get(decolagem.getFila2().size() - 1);
-			System.out.println("\u001B[35mAvião entrou na Fila de Decolagem com ID [" + ultimoFila2.getId() + "] e Chassi: " + ultimoFila2.getIdentification() + "\u001B[0m");
-		}		
+        }	
 	}
 }
 	public void decrementar() {

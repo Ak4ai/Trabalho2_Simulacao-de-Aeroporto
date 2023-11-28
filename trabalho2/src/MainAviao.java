@@ -22,7 +22,7 @@ public class MainAviao {
 		while(op!=0) {
 			//Bloco de Organização
 			System.out.println("============================================================================");
-			P1.organizar(P2, PD);
+			P1.organizar(P2, PD, 0);
 			clima = random.nextInt(2)+1;
 			P1.decrementar();
 			P2.decrementar();
@@ -79,7 +79,7 @@ public class MainAviao {
 					Aviao temp3 = P1.criarAviao(clima, In);
 					P1.comparar(P2).inserirA(temp3);
 				}
-				P1.organizar(P2, PD);
+				P1.organizar(P2, PD, 1);
 			}
 			if(op==2) {
 				//Lendo arquivo
@@ -137,7 +137,7 @@ public class MainAviao {
 						P1.comparar(P2).inserirA(temp2);
 					}
 				}
-				P1.organizar(P2, PD);
+				P1.organizar(P2, PD, 1);
 			}
 			if(op==3) {
 				//Geração Aleátoria
@@ -156,7 +156,7 @@ public class MainAviao {
 					Aviao temp3 = P1.criarAviaoRandom(clima);
 					P1.comparar(P2).inserirA(temp3);
 				}
-				P1.organizar(P2, PD);
+				P1.organizar(P2, PD, 1);
 			}
 			//pos execução
 		}
